@@ -38,7 +38,7 @@ jobs:
           fi
 
           if ! docker pull ghcr.io/${{ secrets.USERNAME }}/${{ secrets.APP_NAME }}:$RELEASE_VERSION 2>/dev/null; then
-            docker build --build-arg USERNAME=${{ secrets.USERNAME }} --build-arg RELEASE_VERSION=$RELEASE_VERSION -f ./prod/dockerfiles/prod.Dockerfile -t ghcr.io/${{ secrets.USERNAME }}/${{ secrets.APP_NAME }}:$RELEASE_VERSION .
+            docker build --build-arg USERNAME=${{ secrets.USERNAME }} --build-arg RELEASE_VERSION=$RELEASE_VERSION -f ./prod/dockerfiles/app.Dockerfile -t ghcr.io/${{ secrets.USERNAME }}/${{ secrets.APP_NAME }}:$RELEASE_VERSION .
           fi
           if ! docker pull ghcr.io/${{ secrets.USERNAME }}/proxy:$RELEASE_VERSION 2>/dev/null; then
             docker build -f ./prod/dockerfiles/static.Dockerfile -t ghcr.io/${{ secrets.USERNAME }}/proxy:$RELEASE_VERSION .
